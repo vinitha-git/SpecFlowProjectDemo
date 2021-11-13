@@ -46,7 +46,7 @@ namespace SpecFlowProjectDemo.StepDefinitions
         public void ThenIShouldNavigateToSearchResultPage()
         {
             Assert.IsTrue(chromeDriver.Url.ToLower().Contains(searchKeyword));
-            //Assert.IsTrue(chromeDriver.Title.ToLower().Contains("phone"));
+            
 
         }
         [When(@"I press sell")]
