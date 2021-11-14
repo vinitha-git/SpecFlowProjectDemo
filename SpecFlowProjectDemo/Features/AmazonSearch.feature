@@ -2,7 +2,7 @@
 
 Search the given keyword
 
-
+gift-cards/
 @tag1
 Scenario: visibility of the Gift Cards elements
 	Given I have navigated to amazon website
