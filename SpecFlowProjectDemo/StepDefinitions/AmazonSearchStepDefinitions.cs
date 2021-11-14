@@ -11,7 +11,7 @@ namespace SpecFlowProjectDemo.StepDefinitions
     {
         private string searchKeyword;
 
-        private OpenQA.Selenium.Chrome.ChromeDriver chromeDriver;
+        private  ChromeDriver  chromeDriver;
 
         private AmazonSearchStepDefinitions() => chromeDriver = new ChromeDriver();
 
@@ -61,17 +61,19 @@ namespace SpecFlowProjectDemo.StepDefinitions
         [Then(@"I should navigate to sell result page")]
         public void ThenIShouldNavigateToSellResultPage()
         {
-           var sell = chromeDriver.FindElement(By.XPath("//*[@id='a - page']/div[2]/div/div/div/div/div/div[1]/div/div[2]/div/div[1]/h2")).Text;
-            TimeSpan.FromSeconds(2);
-            Assert.IsTrue(sell.Contains("Sell on Amazon"));
+           //var sell = chromeDriver.FindElement(By.XPath("//*[@id='a - page']/div[2]/div/div/div/div/div/div[1]/div/div[2]/div/div[1]/h2")).Text;
+           TimeSpan.FromSeconds(2);
+           // Assert.IsTrue(sell.Contains("Sell on Amazon"));
+            Assert.IsTrue(chromeDriver.Url.ToLower().Contains("sell"));
         }       
         [Then(@"I should navigate to Gift Cards result page")]
         public void ThenIShouldNavigateToGiftCardsResultPage()
         {
             TimeSpan.FromSeconds(2);
-            var giftCards = chromeDriver.FindElement(By.XPath("//*[@id='contentGrid_320568']/div/div[1]/div/div/div/h1")).Text;
-            TimeSpan.FromSeconds(2);
-            Assert.IsTrue(giftCards.ToLower().Contains("gift"));
+            //var giftCards = chromeDriver.FindElement(By.XPath("//*[@id='contentGrid_320568']/div/div[1]/div/div/div/h1")).Text;
+            //TimeSpan.FromSeconds(2);
+            //Assert.IsTrue(giftCards.ToLower().Contains("gift"));
+             Assert.IsTrue(chromeDriver.Url.ToLower().Contains("gift"));
         }
         [When(@"I press sell button")]
         public void WhenIPressSellButton()
