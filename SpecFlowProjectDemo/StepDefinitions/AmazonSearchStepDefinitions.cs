@@ -1,6 +1,8 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
 using System;
 using TechTalk.SpecFlow;
 
@@ -22,7 +24,7 @@ namespace SpecFlowProjectDemo.StepDefinitions
             Assert.IsTrue(chromeDriver.Title.ToLower().Contains("amazon"));
         }
         
-        [Given(@"I have entered  (.*) as search keyword")]
+        [Given(@"I have entered .* as search keyword")]
         public void GivenIHaveEnteredPhoneHolderAsSearchKeyword(String searchString)
         {
           
@@ -61,18 +63,15 @@ namespace SpecFlowProjectDemo.StepDefinitions
         [Then(@"I should navigate to sell result page")]
         public void ThenIShouldNavigateToSellResultPage()
         {
-           //var sell = chromeDriver.FindElement(By.XPath("//*[@id='a - page']/div[2]/div/div/div/div/div/div[1]/div/div[2]/div/div[1]/h2")).Text;
-           TimeSpan.FromSeconds(2);
-           // Assert.IsTrue(sell.Contains("Sell on Amazon"));
+            TimeSpan.FromSeconds(2);
+         
             Assert.IsTrue(chromeDriver.Url.ToLower().Contains("sell"));
         }       
         [Then(@"I should navigate to Gift Cards result page")]
         public void ThenIShouldNavigateToGiftCardsResultPage()
         {
             TimeSpan.FromSeconds(2);
-            //var giftCards = chromeDriver.FindElement(By.XPath("//*[@id='contentGrid_320568']/div/div[1]/div/div/div/h1")).Text;
-            //TimeSpan.FromSeconds(2);
-            //Assert.IsTrue(giftCards.ToLower().Contains("gift"));
+            
              Assert.IsTrue(chromeDriver.Url.ToLower().Contains("gift"));
         }
         [When(@"I press sell button")]
@@ -86,7 +85,8 @@ namespace SpecFlowProjectDemo.StepDefinitions
         [When(@"I press Gift Cards button")]
         public void WhenIPressGiftCardsButton()
         {
-            var GiftButton = chromeDriver.FindElement(By.XPath("//*[@id='nav-xshop']/a[4]"));
+            var wait = new WebDriverWait(chromeDriver, TimeSpan.FromSeconds(2));
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='nav-xshop']/a[4]")));            var GiftButton = chromeDriver.FindElement(By.XPath("//*[@id='nav-xshop']/a[4]"));
             TimeSpan.FromSeconds(5);
             GiftButton.Click();
         }
