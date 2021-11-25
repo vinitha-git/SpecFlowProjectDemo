@@ -24,7 +24,7 @@ namespace SpecFlowProjectDemo.StepDefinitions
             Assert.IsTrue(chromeDriver.Title.ToLower().Contains("amazon"));
         }
         
-        [Given(@"I have entered .* as search keyword")]
+        [Given(@"I have entered (.*) as search keyword")]
         public void GivenIHaveEnteredPhoneHolderAsSearchKeyword(String searchString)
         {
           
@@ -86,7 +86,8 @@ namespace SpecFlowProjectDemo.StepDefinitions
         public void WhenIPressGiftCardsButton()
         {
             var wait = new WebDriverWait(chromeDriver, TimeSpan.FromSeconds(2));
-            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='nav-xshop']/a[4]")));            var GiftButton = chromeDriver.FindElement(By.XPath("//*[@id='nav-xshop']/a[4]"));
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='nav-xshop']/a[4]")));           
+            var GiftButton = chromeDriver.FindElement(By.XPath("//*[@id='nav-xshop']/a[4]"));
             TimeSpan.FromSeconds(5);
             GiftButton.Click();
         }
